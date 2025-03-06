@@ -1,6 +1,8 @@
 ---
 layout: home
+# Index page
 ---
+
 # Bringing Awesomeness to Embedded Software
 
 The key projects of the Embedded Awesome initiative are:

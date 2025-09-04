@@ -9,5 +9,5 @@ To demonstrate its ability to improve the developer experience for complicated e
 
 The animation below shows Yakka preparing a development workspace by downloading all the tools and software required to compile and link the blinky example application running on the Silicon Labs xG24-RB4187C EFR32xG24 2.4 GHz Radio Board using GCC for ARM as the compiler.
 
-![Yakka Zephyr](/img/zephyr_blinky_demo.gif)
+![Yakka Zephyr](/assets/img/zephyr_blinky_demo.gif)
 

@@ -11,3 +11,13 @@ The animation below shows Yakka preparing a development workspace by downloading
 
 ![Yakka Zephyr](/assets/img/zephyr_blinky_demo.gif)
 
+So what is Yakka doing?
+
+The call to Yakka includes a single command, "link!", and names four components; "blinky", "xg24_rb4187c", "zephyr", and "gcc_arm".
+The "-f" flag indicates that Yakka should automatically fetch any missing components.
+
+To begin with, Yakka finds three of the four components in the component registry ("gcc_arm", "zephyr", and "xg24_rb4187c") and begins to download those. The "xg24_rb4187c" component downloads quickly and requires two further components; "silabs_platform", and "cmsis_core" which are downloaded next.
+Once "zephyr" is fetched Yakka determines that "silabs_zephyr" is required and begins fetching that component.
+The toolchain, "gcc_arm", is the last component to finish downloading before the "link!" command is executed.
+
+In Yakka, commands are identified by the exclamation mark `!` at the end of the word and are defined within components as "blueprints" but more will be explained in further posts.

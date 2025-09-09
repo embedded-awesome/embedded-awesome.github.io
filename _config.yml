@@ -19,7 +19,7 @@ title: Embedded Awesome # the main title
 tagline: Modern embedded software development # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  A blog about modern embedded software development.
 
 # Fill in the protocol & hostname for your site.
 url: "https://embedded-awesome.github.io"

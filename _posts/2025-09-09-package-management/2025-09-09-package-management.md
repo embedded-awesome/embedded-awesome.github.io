@@ -29,6 +29,6 @@ On the client side, all package fetching can be done with verified server certif
 > Note:
 > It is expected, and recommended as a best practice, that commercial users of Yakka who have a team of developers would manage their own internal package registry rather than have developers fetch components directly from external registries.
 
--- add pic of package registry --
+![Yakka registry](/assets/img/yakka-company-registry.svg)
 
 

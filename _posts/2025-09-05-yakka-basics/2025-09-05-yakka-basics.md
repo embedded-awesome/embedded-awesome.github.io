@@ -10,7 +10,7 @@ The basic unit within Yakka is a `component` which contains data and has relatio
 Components can have relationships not only to other components but also have relationships to features, and the three relationship types are `requires`, `supports`, and `provides`.
 
 Below is the Yakka file for the Blinky app component from Zephyr called `blinky.yakka`:
-```YAML
+```yaml
 name: Blinky app
 
 sources:

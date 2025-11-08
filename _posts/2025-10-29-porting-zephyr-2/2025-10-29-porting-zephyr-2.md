@@ -37,8 +37,8 @@ zephyr:
         address: 0x50030000
         label: 'msc'
         compatible:
-          vendor: 'silabs'
-          type: 'series2-flash-controller'
+          - vendor: 'silabs'
+            type: 'series2-flash-controller'
         reg:
           - address: 0x50030000
             size: 0x3148
@@ -51,7 +51,8 @@ zephyr:
           name: 'flash'
           address: 0x8000000
           label: 'flash0'
-          compatible: 'soc-nv-flash'
+          compatible: 
+            - type: 'soc-nv-flash'
           write_block_size: 4
           erase_block_size: 8192
 ```
@@ -142,7 +143,34 @@ data_schema:
 ```
 
 ## Kconfig
+Kconfig data can be converted to YAML relatively easily and it, like the Devicetree data, can become a data requirement to be aggregated into a single tree however we are still missing one of the key benefits of Kconfig which is an interactive user interface to manipulate the values and browse the available options.
+
+This creates an opportunity to introduce Yakka's built-in API server and how it can be used to create a web UI that consumes the Kconfig data, creates an interactive GUI, and writes any modifications to a project component.
 
 ## Configuration
+Yakka includes a HTTP server that can be spawned by passing the `serve` command without any arguments (any additional arguments are ignored). The command operates on the entire workspace allowing the user to interact with multiple projects and components.
+```
+% yakka-macos serve
+[2025-10-31 18:23:56.560] [console] [info] Server is running on http://localhost:8080
+```
+
+The server manages an `/api` endpoint to fetch and serve JSON data for projects, components, and registries and allows components to register one or more endpoints and will serve files from the context of the relevant component. For a component to indicate it will service a particular endpoint it adds entries under `/yakka/serve` with the name of the URL endpoint. In the following example an MCU explorer can register for `http://localhost:8080/mcu` by the following:
+```yaml
+yakka:
+  serve:
+    - 'mcu'
+```
+
+Any requests for `http://localhost:8080/mcu` or any sub-path such as `http://localhost:8080/mcu/efr32mg24` will be handled by the registered component.
+
+This provides complete control to vendors who can customize the styling, branding, and behaviour of web components that are fetched as required.
+
+Embedded Awesome has created a sample configuration component (here)[] using Vue JS that provides components for Devicetree and Kconfig.
+
+![](assets/img/config-app-full.png)
+
+![](assets/img/config-zephyr-device-tree.png){: width="250" }
+
+![](assets/img/config-components.png){: width="250" }
 
 # Data transformation
